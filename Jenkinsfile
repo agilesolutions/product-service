@@ -8,7 +8,7 @@ pipeline {
         stage ('Build') {
             steps {
                 echo 'This is a minimal pipeline.'
-                //bat 'mvn clean package -Dmaven.test.skip=true'
+                //bat 'mvn integration-test'
             }
         }
         stage('Generate HTML report') {
