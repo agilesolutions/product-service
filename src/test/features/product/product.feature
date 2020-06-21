@@ -1,6 +1,6 @@
-Feature: Category management
+Feature: Product management
 
-   Scenario Outline: Retrieve transmit product
+   Scenario Outline: Retrieve product by identifier
         When I search product <id>
         Then the product is found
         And its description is '<title>'
