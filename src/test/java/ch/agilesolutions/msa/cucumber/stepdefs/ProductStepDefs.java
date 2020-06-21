@@ -30,7 +30,7 @@ public class ProductStepDefs extends StepDefs {
 
     @When("I search product {int}")
     public void i_search_product(int productId) throws Throwable {
-        actions = restProductMockMvc.perform(get("/api/categories/" + productId)
+        actions = restProductMockMvc.perform(get("/api/products/" + productId)
                 .accept(MediaType.APPLICATION_JSON));
     }
 
@@ -42,8 +42,8 @@ public class ProductStepDefs extends StepDefs {
     }
 
     @Then("its description is {string}")
-    public void his_last_name_is(String lastName) throws Throwable {
-        actions.andExpect(jsonPath("$.description").value(lastName));
+    public void his_last_name_is(String title) throws Throwable {
+        actions.andExpect(jsonPath("$.title").value(title));
     }
 
 }
