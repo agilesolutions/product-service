@@ -25,4 +25,12 @@ pipeline {
 	    	}
     	}
     }
+    post {
+        always {
+                           cucumber buildStatus: "UNSTABLE", 
+                           fileIncludePattern: "**/cucumber.json",
+                           jsonReportDirectory: 'target'
+        	}
+        }
+
 }
