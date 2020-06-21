@@ -8,14 +8,14 @@ pipeline {
         stage ('Build') {
             steps {
                 echo 'This is a minimal pipeline.'
-                //bat 'mvn integration-test'
+                bat 'mvn integration-test'
             }
         }
         stage('Generate HTML report') {
             steps {
     	    		cucumber buildStatus: 'UNSTABLE',
-                	reportTitle: 'My report',
-                	fileIncludePattern: '**/*.json',
+                	reportTitle: 'Product scenarios',
+                	fileIncludePattern: 'cucumber.json',
                 	trendsLimit: 10,
                 	classifications: [
                     	['key': 'Browser',
