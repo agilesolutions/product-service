@@ -1,0 +1,49 @@
+application {
+  config {
+    baseName product
+    applicationType microservice
+    packageName ch.agilesolutions.msa
+    clientFramework react
+    prodDatabaseType mysql
+    devDatabaseType h2Memory
+    testFrameworks [cucumber]
+    cacheProvider no
+    buildTool maven
+    serverPort 8080
+    nativeLanguage en
+    languages [en, fr, de]
+  }
+  entities Category, Product
+}
+
+
+enum CategoryStatus {
+    AVAILABLE, RESTRICTED, DISABLED
+}
+
+entity Category {
+    description String required,
+    sortOrder Integer,
+    dateAdded LocalDate,
+    dateModified LocalDate,
+    status CategoryStatus
+}
+
+entity Product {
+    title String required,
+    keywords String,
+    description String,
+    rating Integer,
+    dateAdded LocalDate,
+    dateModified LocalDate
+}
+
+relationship ManyToOne {
+	Category{parent} to Category
+}
+
+relationship ManyToMany {
+	Category{product(title)} to Product{category}
+}
+
+service Product with serviceClass
