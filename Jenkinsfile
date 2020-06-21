@@ -8,11 +8,12 @@ pipeline {
         stage ('Build') {
             steps {
                 echo 'This is a minimal pipeline.'
-                bat 'mvn clean test'
+                bat 'mvn clean package'
             }
         }
         stage('Generate HTML report') {
-        		cucumber buildStatus: 'UNSTABLE',
+            steps {
+    	    		cucumber buildStatus: 'UNSTABLE',
                 	reportTitle: 'My report',
                 	fileIncludePattern: '**/*.json',
                 	trendsLimit: 10,
@@ -21,6 +22,7 @@ pipeline {
                         'value': 'Firefox'
                     	]
                 	]
+	    	}
     	}
     }
 }
