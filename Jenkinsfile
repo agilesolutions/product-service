@@ -11,19 +11,6 @@ pipeline {
                 bat 'mvn integration-test'
             }
         }
-        stage('Generate HTML report') {
-            steps {
-    	    		cucumber buildStatus: 'UNSTABLE',
-                	reportTitle: 'Product scenarios',
-                	fileIncludePattern: 'cucumber.json',
-                	trendsLimit: 10,
-                	classifications: [
-                    	['key': 'Browser',
-                        'value': 'Firefox'
-                    	]
-                	]
-	    	}
-    	}
     }
     post {
         always {
